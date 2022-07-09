@@ -1,0 +1,6 @@
+framework module Pods_TheRightBaluchon {
+  umbrella header "Pods-TheRightBaluchon-umbrella.h"
+
+  export *
+  module * { export * }
+}
