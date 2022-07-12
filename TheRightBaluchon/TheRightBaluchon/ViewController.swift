@@ -27,8 +27,9 @@ class WeatherController: UIViewController {
         AF.request("https://api.openweathermap.org/data/2.5/weather?q=\(String(describing: city.text))&appid=5fb97e1a17e403be063cc0b941ea6e08")
             .responseDecodable(of: [Weather].self){
                 (reponse) in
-                        
+                
             }
+        
     }
 }
 
@@ -47,7 +48,6 @@ struct Weather : Decodable{
         condition = json["condition"] as? String
         temperature = json["temperature"] as? String
     }
-    
 }
 
 
@@ -55,31 +55,55 @@ class TraduceController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view.
-        
-        
+        AF.request("")
+            .responseDecodable(of: [Traduce].self){
+                (reponse) in
+                
+            }
+    }
+}
+
+struct Traduce: Decodable{
+    
+    var id : String?
+    var sentence : String?
+    var traduce : String?
+    
+    init(json: [String : Any]) {
+        id = json[""] as? String
+        sentence = json[""] as? String
+        traduce = json[""] as? String
     }
     
 }
 
-struct Traduce : Decodable{
-    
-}
-
-
-
 class MoneyController: UIViewController {
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
-        
+        AF.request( "https://api.apilayer.com/fixer/convert?to=to&from=from&amount=amount")
+            .responseDecodable(of: [Money].self){
+                (reponse) in
+                
+            }
     }
-    
 }
 
 struct Money : Decodable{
+    
+    var id : String?
+    var moneyBefore : String?
+    var moneyAfter : String?
+    
+    init(json: [String : Any]) {
+        id = json[""] as? String
+        moneyBefore = json[""] as? String
+        moneyAfter = json[""] as? String
+    }
     
 }
 
